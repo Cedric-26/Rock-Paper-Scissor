@@ -1,17 +1,21 @@
+let a= "rock";
+let b= "paper";
+let c= "scissor";
 function getComputerChoice()
 {
     let x= (Math.floor(Math.random()*3) +1 )
 
+
         switch (x)
         {
             case 1:
-                return("Rock");
+                return(a);
                 break;
             case 2:
-                return("Paper");
+                return(b);
                 break;
                 case 3:
-                    return("Scissor");
+                    return(c);
                     break;             
         } 
 
@@ -21,31 +25,31 @@ function playRound(playerSelection, computerSelection)
   
   switch(playerSelection)
   {
-    case playerSelection =="Paper" && computerSelection =="Rock" :
+    case playerSelection.toLowerCase == b && computerSelection == a :
         console.log(" You win, Paper beats Rock");
         break;
-    case playerSelection =="Paper" && computerSelection =="Paper" :
+    case playerSelection.toLowerCase ==b && computerSelection == b:
         console.log(" This is a draw");
         break;
-    case playerSelection =="Rock" && computerSelection =="Paper" :
+    case playerSelection.toLowerCase == a && computerSelection.toLowerCase == b:
             console.log(" You lose! Paper beats Rock");
         break;
-    case playerSelection =="Rock" && computerSelection =="Rock" :
+    case playerSelection.toLowerCase == a && computerSelection.toLowerCase == a :
             console.log(" This is a draw");
         break;
-    case playerSelection =="Rock" && computerSelection =="Scissor" :
+    case playerSelection.toLowerCase == a && computerSelection.toLowerCase == c:
                 console.log(" You Win! Rock beats Scissors");
         break;
-    case playerSelection =="Scissor" && computerSelection =="Rock" :
+    case playerSelection.toLowerCase == c && computerSelection.toLowerCase == a :
             console.log(" You Lose! Rock beats Scissors");
          break;
-    case playerSelection =="Scissor" && computerSelection =="Scissor" :
+    case playerSelection.toLowerCase =="Scissor" && computerSelection.toLowerCase =="Scissor" :
             console.log(" This is a draw");
         break;
-    case playerSelection =="Paper" && computerSelection =="Scissor" :
+    case playerSelection.toLowerCase =="Paper" && computerSelection.toLowerCase =="Scissor" :
             console.log(" You Lose! Scissors beats paper");
         break;
-    case playerSelection =="Scissor" && computerSelection =="Paper" :
+    case playerSelection.toLowerCase =="Scissor" && computerSelection.toLowerCase =="Paper" :
             console.log(" You Win! Scissors beats paper");
         break;
     default:
@@ -54,6 +58,8 @@ function playRound(playerSelection, computerSelection)
   
 
 }
-    let playerSelection=parseInt(prompt("Enter your choice")); 
-    const computerSelection= getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+    const playerSelection=parseInt(prompt("Enter your choice")); 
+   
+    let computerSelection= getComputerChoice();
+    
+    playRound(playerSelection, computerSelection);

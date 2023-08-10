@@ -24,39 +24,81 @@ function playRound(playerSelection, computerSelection)
 {
     if(playerSelection == computerSelection)
     {
-        console.log("It is a draw");
+        return("It is a draw");
     }
-    else if(playerSelection =="paper" && computerSelection == rock )
+    else if (playerSelection =="paper")  
     {
-        console.log("You win, Paper beats Rock");
+        if(computerSelection == 'rock' )
+        {
+        return("You win, Paper beats Rock");
+        }
     }
     else if(playerSelection === 'rock' && computerSelection === paper)
     {
-        console.log("You lose! Paper beats Rock");
+        return("You lose! Paper beats Rock");
     }
     else if(playerSelection === 'rock' && computerSelection === scissor)
     {
-        console.log("You Win! Rock beats Scissors");
+        return("You Win! Rock beats Scissors");
     }
     else if(playerSelection === 'scissor' && computerSelection === rock)
     {
-        console.log(" You Lose! Rock beats Scissors");
+        return(" You Lose! Rock beats Scissors");
     }
     else if(playerSelection === 'paper' && computerSelection === scissor)
     {
-        console.log(" You Lose! Scissors beats paper");
+        return(" You Lose! Scissors beats paper");
     }
     else if(playerSelection === 'scissor' && computerSelection === paper)
     {
-        console.log("You Win! Scissors beats paper");
+        return("You Win! Scissors beats paper");
     }
     else
     {
-        console.log("Your Choice was invalid")
+        return("Your Choice was invalid")
     }
 }
-    let playerSelection1=parseInt(prompt("Enter your choice")); 
-    let playerSelection= playerSelection1.toLowerCase;
-    let computerSelection= getComputerChoice();
     
-    playRound(playerSelection, computerSelection);
+function game()
+{
+    let playerWins=0;
+    let computerWins=0;
+    let draw=0;
+    for (let i=0; i<=4; i++)
+    {
+        let playerSelection=(prompt("Enter your choice")).toLowerCase(); 
+        let computerSelection= getComputerChoice();
+    
+        console.log(playRound(playerSelection, computerSelection));
+
+        if (playRound(playerSelection, computerSelection) === "You win, Paper beats Rock" || 
+        playRound(playerSelection, computerSelection) === "You win, Rock beats Scissors" ||
+        playRound(playerSelection, computerSelection) === "You win, Scissors beats paper")
+        {
+            playerWins +=1;
+        }
+        else if (playRound(playerSelection, computerSelection) === "You lose! Paper beats Rock" ||
+        playRound(playerSelection, computerSelection) === "You Lose! Rock beats Scissors" ||
+        playRound(playerSelection, computerSelection) === "You Lose! Scissors beats paper" )
+        {
+            computerWins +=1;
+        }
+        else
+        {
+            draw +=1;
+        }
+    }
+    if (playerWins > computerWins || playerWins > draw)
+    {
+        alert("Congratulations! you won");
+    }
+    else if (computerWins > playerWins || computerWins > draw)
+    {
+        alert("Bummer the computer won");
+    }
+    else if (draw > playerWins || computerWins < draw)
+    {
+        alert("This is an overall draw");
+    }
+}
+game();
